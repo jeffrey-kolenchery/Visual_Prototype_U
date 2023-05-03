@@ -1,149 +1,58 @@
 import QtQuick 2.15
-
 import QtQuick.Window 2.15
-import QtQuick.Controls 6.3
-import Qt.test.controls 6.0
-import QtQuick.Controls.Windows 6.0
-import QtQuick.Layouts 6.3
-import QtMultimedia 5.0
+import QtQuick.Controls 2.12
 
+import QtMultimedia
 
-Window{
-    id: window
+Window {
+    id: mainWindow
     visible: true
-    width: 900
-    height: 680
-    title: qsTr("Home Page")
+    width: 960
+    height: 540
+    title: "QML"
 
-    ColumnLayout{
-        x: 0
-        y: 23
-        anchors.left: parent.left
-        Video {
-            id: video
-            width : 600
-            height : 600
-            source: "../../Desktop/vedio"
 
-            Image {
-                id: image2
-                x: 290
-                y: 458
-                width: 30
-                height: 42
-                source: "../../Desktop/Stop.png"
-                fillMode: Image.PreserveAspectFit
-            }
+//    Rectangle {
+//            id: videoContainer
+//            anchors.fill: parent
+//            visible: false
+//            MediaPlayer {
+//                id: mediaPlayer
 
-            Image {
-                id: image3
-                x: 363
-                y: 458
-                width: 34
-                height: 42
-                source: "../../Desktop/Battery.png"
-                fillMode: Image.PreserveAspectFit
+//                source: "qrc:/button/IMG_4692 2.mov"
+//            }
+//            VideoOutput {
+//                id: videoOutput
+//                source: mediaPlayer
+//                anchors.fill: parent
+//            }
+//        }
 
-            }
+
+    Rectangle {
+            id: background
+            width: mainWindow.width
+            height: mainWindow.height
 
             Image {
-                id: image1
-                x: 200
-                y: 360
-                width: 34
-                height: 38
-                source: "../../Desktop/Play.png"
+                x: 0
+                y: 0
+                width: mainWindow.width
+                height: mainWindow.height
+                source: "qrc:/button/d205d79a4c12427ad7185a8daaaea249.jpg"
                 fillMode: Image.PreserveAspectFit
+//                fillMode: Image.Stretch
             }
         }
-         RowLayout{
-
-
-            Button {
-                id: button
-                width: 40
-                height: 40
-                text: "play"
-                autoRepeatDelay: 300
-                onClicked: {video.play()}
-                background: Image {
-                        source: "../../Desktop/Play.png"
-                        fillMode: Image.PreserveAspectFit
-                    }
-            }
-            Button {
-                width: 40
-                height: 40
-                text: "stop"
-                onClicked: {video.stop()}
-                background: Image {
-
-                        source: "../../Desktop/Stop.png"
-                        fillMode: Image.PreserveAspectFit
-                    }
-
-
-            }
-
-
-                Button {
-                    id: myButton
-                    width: 40
-                    height: 40
-                    text: "battery"
-                    background: Image {
-                        source:  "../../Desktop/Battery.png"
-                        fillMode: Image.PreserveAspectFit
-                    }
-
-                }
-
-
-            Button {
-                width: 40
-                height: 40
-                text: "foward"
-                onClicked: {video.foward()}
-                background: Image {
-                    source:  "../../Desktop/Tag.png"
-                    fillMode: Image.PreserveAspectFit
-                }
-                contentItem: Text {
-                       text: "tag"
-                       font.bold: true
-                       font.pointSize: 12
-                       color: "grey"
-                   }
-
-
-
-            }
-            Button {
-                width: 80
-                height: 80
-                text: "back"
-                onClicked: {video.back()}
-            }
-         }
-    }
-
-    Image {
-        id: image
-        x: 67
-        y: 102
-        width: 42
-        height: 52
-        source: "../../Desktop/Tag.png"
-        fillMode: Image.PreserveAspectFit
-    }
 
     property int elapsedTime: 0
 
     Rectangle {
-        id: background
+        id: timer_background
         color: "#303030"
-        x: 800
-        y: 900
+        x: 420
+//        y: 467
+        y: mainWindow.height * 6/7
 
 
         Text {
@@ -154,10 +63,8 @@ Window{
             font.pixelSize: 24
         }
 
-        width: timeText.paintedWidth
+        width: 170
         height: timeText.paintedHeight
-
-
     }
 
     Timer {
@@ -172,6 +79,109 @@ Window{
         }
     }
 
+    Image {
+        id: iMG_4708
+        x: 203
+//        y: 451
+        y: mainWindow.height * 5/6
+        width: 66
+        height: 62
+        visible: true
+        //        source: "button/IMG_4708.PNG"
+        source: "../button/IMG_4708.PNG"
+        fillMode: Image.PreserveAspectFit
+    }
+
+    Image {
+        id: iMG_4709
+        x: 877
+//        y: 450
+        y: mainWindow.height * 5/6
+        width: 69
+        height: 62
+        source: "../button/IMG_4709.PNG"
+        fillMode: Image.PreserveAspectFit
+    }
+
+    Image {
+        id: iMG_4707
+        x: 295
+//        y: 451
+        y: mainWindow.height * 5/6
+        width: 61
+        height: 62
+        source: "../button/IMG_4707.PNG"
+        fillMode: Image.PreserveAspectFit
+    }
+
+    Image {
+        id: battery
+        x: 827
+//        y: 461
+        y: mainWindow.height * 0.85
+        width: 35
+        height: 40
+        source: "../button/Battery.png"
+        fillMode: Image.PreserveAspectFit
+    }
+
+    Image {
+        id: lumawaveform
+        x: 674
+//        y: 436
+        y: mainWindow.height * 4/5
+        width: 126
+        height: 90
+        source: "../button/lumawaveform.PNG"
+        fillMode: Image.PreserveAspectFit
+    }
+
+    Video {
+        id: v
+        height:mainWindow.height
+        width:mainWindow.width
+        anchors.horizontalCenter: mainWindow.horizontalCenter
+        source: "../button/IMG_4692 2.mov"
+    }
+
+    Button {
+        id: play
+        x: 107
+//        y: 451
+        y: mainWindow.height * 5/6
+        width: 66
+        height: 62
+        background: null
+        Image {
+            anchors.fill: parent;
+            source: "../button/play.png"
+            fillMode: Image.PreserveAspectFit
+        }
+        onClicked: {
+//                    videoContainer.visible = true
+//                    mediaPlayer.play()
+            v.play()
+                    console.log("play")
+                }
+
+    }
+
+    Image {
+        id: stop
+        x: 20
+//        y: 451
+        y: mainWindow.height * 5/6
+        width: 64
+        height: 61
+        source: "../button/stop.png"
+        fillMode: Image.PreserveAspectFit
+    }
+
+
+
+
+
+
     function formatElapsedTime(ms) {
         var hours = Math.floor(ms / 3600000)
         var minutes = Math.floor((ms % 3600000) / 60000)
@@ -184,4 +194,5 @@ Window{
     function pad(number, digits = 2) {
         return String(number).padStart(digits, '0')
     }
+
 }

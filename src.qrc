@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>button/IMG_4707.PNG</file>
+        <file>button/IMG_4708.PNG</file>
+        <file>button/IMG_4709.PNG</file>
+        <file>button/Battery.png</file>
+        <file>button/DSC_2141.png</file>
+        <file>button/lumawaveform.PNG</file>
+        <file>button/play.png</file>
+        <file>button/stop.png</file>
+        <file>button/IMG_4692 2.mov</file>
+        <file>button/d205d79a4c12427ad7185a8daaaea249.jpg</file>
+    </qresource>
+</RCC>
